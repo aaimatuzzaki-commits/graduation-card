@@ -30,7 +30,14 @@ class MainActivity : ComponentActivity() {
             GraduationCardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greetingtex(
-                        Message = "Happy Graduation Anna!",
+                        Message = "“Semoga semua lelahmu hari ini berubah jadi bahagia esok hari.\n" +
+                                "Kamu kuat, bahkan saat kamu merasa tidak baik-baik saja.”\n" +
+                                "\n" +
+                                "“Terima kasih sudah bertahan sejauh ini.\n" +
+                                "Dunia mungkin tidak selalu ramah, tapi kamu selalu berharga.”\n" +
+                                "\n" +
+                                "“Aku mungkin tidak selalu ada di sampingmu,\n" +
+                                "tapi doaku selalu menemukan jalan untuk sampai ke kamu.”",
                         sender = "from Zaki",
                         modifier = Modifier.padding(innerPadding)
                     )
@@ -52,8 +59,8 @@ fun Greetingtex(Message: String,
 
         Text(
             text = Message,
-            fontSize = 74.sp,
-            lineHeight = 110.sp,
+            fontSize = 25.sp,
+            lineHeight = 30.sp,
             textAlign = TextAlign.Center
         )
         Text(
@@ -71,7 +78,14 @@ fun Greetingtex(Message: String,
 @Composable
 fun GreetingtextPreview() {
     GraduationCardTheme {
-        Greetingtex(Message = "Happy Gradution Anna!",
+        Greetingtex(Message = "“Semoga semua lelahmu hari ini berubah jadi bahagia esok hari.\n" +
+                "Kamu kuat, bahkan saat kamu merasa tidak baik-baik saja.”\n" +
+                "\n" +
+                "“Terima kasih sudah bertahan sejauh ini.\n" +
+                "Dunia mungkin tidak selalu ramah, tapi kamu selalu berharga.”\n" +
+                "\n" +
+                "“Aku mungkin tidak selalu ada di sampingmu,\n" +
+                "tapi doaku selalu menemukan jalan untuk sampai ke kamu.”",
                     sender = "from Zaki")
     }
 }
