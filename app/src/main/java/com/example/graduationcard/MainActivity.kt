@@ -46,7 +46,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
 @Composable
 fun Greetingtex(Message: String,
                 sender: String,
