@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">graduation card</string>
+    <string name="happy_graduation_text">Happy Graduation Anna!</string>
+    <string name="sender_Text">from Zaki</string>
 </resources>
