@@ -1,13 +1,10 @@
-package com.example.graduationcard
-
-import android.R
 import android.os.Bundle
-import android.os.Message
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.gestures.snapping.SnapPosition
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -16,11 +13,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.graduationcard.ui.theme.GraduationCardTheme
+import com.example.graduationcard.R
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,9 +30,9 @@ class MainActivity : ComponentActivity() {
         setContent {
             GraduationCardTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greetingtex(
-                        Message = "Happy Graduation Anna!",
-                        sender = "from Zaki",
+                    GreetingImage(
+                        message = stringResource(R.string.ucapan),
+                        sender = stringResource(R.string.sender),
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -41,37 +42,53 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greetingtex(Message: String,
-                sender: String,
-                modifier: Modifier = Modifier ){
-    Column (
-        verticalArrangement = Arrangement.Center,
-        modifier = modifier.padding(8.dp).fillMaxSize()
+fun GreetingImage(message: String, sender: String, modifier: Modifier = Modifier) {
+    val image = painterResource(R.drawable.bg_1)
 
-    ) {
-
-        Text(
-            text = Message,
-            fontSize = 74.sp,
-            lineHeight = 110.sp,
-            textAlign = TextAlign.Center
+    Box(modifier = modifier) {
+        Image(
+            painter = image,
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize(),
+            contentScale = ContentScale.Crop,
+            alpha = 0.5f
         )
-        Text(
-            text = sender,
-            fontSize = 28.sp,
-            modifier = Modifier
-                .padding(16.dp)
-                .align (alignment = Alignment.End)
+        GreetingText(
+            message = message,
+            sender = sender,
+            modifier = Modifier.fillMaxSize()
         )
     }
 }
 
+@Composable
+fun GreetingText(message: String, sender: String, modifier: Modifier = Modifier) {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier.padding(8.dp)
+    ) {
+        Text(
+            text = message,
+            fontSize = 36.sp,
+            lineHeight = 44.sp,
+            textAlign = TextAlign.Center
+        )
+        Text(
+            text = sender,
+            fontSize = 24.sp,
+            modifier = Modifier
+                .padding(16.dp)
+                .align(Alignment.End)
+        )
+    }
+}
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingtextPreview() {
+fun GraduationCardPreview() {
     GraduationCardTheme {
-        Greetingtex(Message = "Happy Gradution Anna!",
-                    sender = "from Zaki")
+        GreetingImage(message = stringResource(R.string.ucapan),
+            sender = stringResource(R.string.sender))
     }
 }
